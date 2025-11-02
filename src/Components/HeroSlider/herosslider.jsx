@@ -1,50 +1,52 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";            
 import useAnimeByCategory from "../../queries/useAnimeByCategory";
-import { Slider, Slide, SlideInfo, Dots, Dot }  from "../HeroSlider/heroslider.styled"
+import {Wrapper,Slide,Overlay,Info,ArrowLeft,ArrowRight, Dots,Dot, Empty} from "./heroslider.styled";
 
-export default function HeroSlider({ category = "shounen" }) {
-  const { data = [], isLoading } = useAnimeByCategory(category);
+const HeroSlider = ({ category, interval = 4000 }) => {
+  const { data = [], isLoading } = useAnimeByCategory(category, 5);
+  const slides = data.filter((a) => a.img);
+
   const [index, setIndex] = useState(0);
 
+  
   useEffect(() => {
-    const t = setInterval(() => {
-      setIndex((p) => (p + 1) % (data.length || 1));
-    }, 4000);
-    return () => clearInterval(t);
-  }, [data.length]);
+    if (slides.length === 0) return;
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [slides, interval]);
 
-  if (isLoading || !data.length) return null;
+  const handlePrev = () => setIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  const handleNext = () => setIndex((prev) => (prev + 1) % slides.length);
 
-  const slides = data.slice(0, 5);
+  if (isLoading) return <Empty>Loading...</Empty>;
+  if (!slides.length) return <Empty>No slides found.</Empty>;
 
   return (
-    <Slider>
-      {slides.map((a, i) => {
-        const to = `/anime/${a.slug || a.id}`;       
-        return (
-          <Slide
-            key={a.id}
-            as={Link}                                  
-            to={to}
-            $active={i === index}
-            aria-label={`Open ${a.title}`}
-          >
-            {a.poster && <img src={a.poster} alt={a.title} />}
-            <SlideInfo>
-              <h2>{a.title}</h2>
-              <p>Episodes: {a.episodeCount ?? "?"}</p>
-              <p>Rating: {a.rating ?? "N/A"}</p>
-            </SlideInfo>
-          </Slide>
-        );
-      })}
+    <Wrapper>
+      {slides.map((s, i) => (
+        <Slide key={s.id} $bg={s.img} $active={i === index}>
+          <Overlay />
+          <Info >
+            <h1>{s.title}</h1>
+            <p>{s.episodeCount ? `Episodes: ${s.episodeCount} ` : "Unknown"}</p>
+            {s.rating && <span>Rating: {s.rating}</span>}
+          </Info>
+        </Slide>
+      ))}
+
+      <ArrowLeft onClick={handlePrev}>❮</ArrowLeft>
+      <ArrowRight onClick={handleNext}>❯</ArrowRight>
 
       <Dots>
         {slides.map((_, i) => (
           <Dot key={i} $active={i === index} onClick={() => setIndex(i)} />
         ))}
       </Dots>
-    </Slider>
+    </Wrapper>
   );
-}
+};
+
+export default HeroSlider;
+

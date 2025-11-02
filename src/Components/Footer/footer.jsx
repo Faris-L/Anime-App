@@ -1,5 +1,6 @@
 import logo from "../../assets/animelogo.png";
-import { FooterContainer,NavLinks,StyledNavLink,Copyright,Brand,Logo,Tittle,Devide} from "./footer.styled";
+
+import { FooterContainer,NavLinks,StyledNavLink,Copyright,Brand,Logo,Tittle,Devide,ExternalLink} from "./footer.styled";
 
 const Footer = () => {
   return (
@@ -19,7 +20,7 @@ const Footer = () => {
       </NavLinks>
 
     </Devide>
-      <Copyright>© 2022 Flowbite™. All Rights Reserved.</Copyright>
+      <Copyright>© 2022   <ExternalLink href="https://flowbite.com/" target="_blank" rel="noopener noreferrer">Flowbite™</ExternalLink>. All Rights Reserved.</Copyright>
     </FooterContainer>
   );
 };

@@ -14,10 +14,10 @@ const LayoutWrapper = styled.div`
 
 
 const Main = styled.main`
-  flex: 1;                     
-  padding-top: 69px;            
+  flex: 1;
+  padding-top: 69px;
   @media (min-width: 768px) {
-    padding-left: 240px;       
+    padding-left: 150px;   
   }
 `;
 

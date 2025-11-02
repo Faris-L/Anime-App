@@ -1,96 +1,123 @@
 import styled from "styled-components";
 
-export const Slider = styled.div`
+const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 45vh;
   overflow: hidden;
-  border-radius: 10px;
-  background: #1f1f22;
-
-  @media (max-width: 768px) {
-    height: 260px;
-  }
+  border-radius: 6px;
+  border-bottom: 20px solid #343338;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);;
 `;
 
-export const Slide = styled.div`
+const Overlay = styled.div`
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  background: rgba(0,0,0,0.35);    
+  transition: background .4s ease;
+`;
+
+const Info = styled.div`
+  position: absolute;
+  top: 10%;
+  left: 6%;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .35s ease, transform .35s ease;
+  text-shadow: 0 6px 30px rgba(0,0,0,.6);
+
+  h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 .5rem; }
+  p  { margin: 0 0 .25rem; opacity: .9; }
+  span { opacity: .85; }
+`;
+
+const Slide = styled.div`
+  position: absolute;
+  inset: 0;
+  background-image: url(${(p) => p.$bg});
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease, transform 2s ease;
   opacity: ${(p) => (p.$active ? 1 : 0)};
-  transform: ${(p) => (p.$active ? "scale(1)" : "scale(1.04)")};
-  transition: opacity 0.9s ease, transform 0.9s ease;
-  cursor: pointer;
+  transform: scale(${(p) => (p.$active ? 1 : 1.05)});
+  pointer-events: ${(p) => (p.$active ? "auto" : "none")};
+  z-index: ${(p) => (p.$active ? 2 : 1)};
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: filter 0.4s ease;
-  }
-
-  /* Kad pređeš mišem — malo zatamni */
-  &:hover img {
-    filter: brightness(0.6);
-  }
-
-  /* Kad pređeš mišem — prikaži tekst */
-  &:hover div {
+  &:hover ${Info} {
     opacity: 1;
     transform: translateY(0);
   }
-`;
-
-export const SlideInfo = styled.div`
-  position: absolute;
-  left: 40px;
-  bottom: 60px;
-  z-index: 5;
-  color: #fff;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
-  opacity: 0; /* skriveno dok nije hover */
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-
-  h2 {
-    margin: 0 0 8px;
-    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
-    font-weight: 700;
-  }
-
-  p {
-    margin: 0;
-    font-size: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    left: 16px;
-    bottom: 30px;
+  &:hover ${Overlay} {
+    background: rgba(0,0,0,0.55);  
   }
 `;
 
-export const Dots = styled.div`
+
+const ArrowLeft = styled.button`
   position: absolute;
-  bottom: 14px;
+  /* left: 20px; */
+  background: transparent;
+  top: 50%;
+  height: 100%;
+  transform: translateY(-50%);
+  border: none;
+  font-size: 2rem;
+  padding: 4px 10px;
+  cursor: pointer;
+  z-index: 7;
+  transition: background .25s ease;
+  &:hover { background: rgba(0, 0, 0, 0.2); }
+`;
+
+const ArrowRight = styled(ArrowLeft)`
+  left: auto;
+  right: 1px;
+`;
+
+
+const Dots = styled.div`
+  position: absolute;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
-  z-index: 20;
+  gap: 15px;
+  z-index: 6;
+  padding: 6px 10px;
+  border-radius: 999px;
 `;
 
-export const Dot = styled.button`
-  width: 12px;
-  height: 12px;
-  border-radius: 9999px;
-  border: none;
+const Dot = styled.button`
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 50%;
+  background: ${(p) => (p.$active ? "#fff" : "rgba(255,255,255,0.5)")};
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.25);
   cursor: pointer;
-  background: ${(p) => (p.$active ? "#e451c6" : "#999")};
-  transition: background 0.25s ease;
-
-  &:hover {
-    background: #e451c6;
-  }
+  transition: transform .2s, background .2s;
+  transform: scale(${(p) => (p.$active ? 1.1 : 1)});
 `;
+
+
+const Empty = styled.div`
+  width: 100%;
+  height: 70vh;
+  display: grid;
+  place-items: center;
+  color: #ccc;
+  background: #2f2e33;
+`;
+
+export {
+  Wrapper,
+  Slide,
+  Overlay,   
+  Info,
+  ArrowLeft,
+  ArrowRight,
+  Dots,
+  Dot,
+  Empty,
+};

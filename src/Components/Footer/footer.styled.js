@@ -25,6 +25,15 @@ export const Devide = styled.div`
     padding: 10px 0;
   }
 `
+export const ExternalLink = styled.a`
+  color: #fff;
+  text-decoration: none;
+  margin-left: 5px;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 
 export const NavLinks = styled.nav`
   display: flex;

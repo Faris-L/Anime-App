@@ -25,6 +25,8 @@ export default function useAnimeByCategory(category, limit = 12) {
           rating: a.averageRating ?? null,
           episodeCount: a.episodeCount ?? null,
           slug: a.slug,
+          description:
+          a.synopsis || a.description || "Opis nije dostupan.", 
         };
       }),
   });

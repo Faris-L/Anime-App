@@ -22,6 +22,8 @@ export default function useMangaByCategory(category, limit = 12) {
             null,
           rating: a.averageRating ?? null,
           slug: a.slug,
+          description:
+          a.synopsis || a.description || "Opis nije dostupan.", 
         };
       }),
   });

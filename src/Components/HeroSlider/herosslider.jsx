@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import useAnimeByCategory from "../../queries/useAnimeByCategory";
 import {Wrapper,Slide,Overlay,Info,ArrowLeft,ArrowRight, Dots,Dot, Empty} from "./heroslider.styled";
 
@@ -8,7 +9,11 @@ const HeroSlider = ({ category, interval = 4000 }) => {
 
   const [index, setIndex] = useState(0);
 
-  
+  const navigate = useNavigate();
+
+  const handleOpenDetail = (anime) => {
+    navigate(`/anime/${anime.slug || anime.id}`, { state: { item: anime, type: "anime" } });
+  };
   useEffect(() => {
     if (slides.length === 0) return;
     const timer = setInterval(() => {
@@ -26,7 +31,7 @@ const HeroSlider = ({ category, interval = 4000 }) => {
   return (
     <Wrapper>
       {slides.map((s, i) => (
-        <Slide key={s.id} $bg={s.img} $active={i === index}>
+        <Slide key={s.id} $bg={s.img} $active={i === index} onClick={() => handleOpenDetail(s)}>
           <Overlay />
           <Info >
             <h1>{s.title}</h1>

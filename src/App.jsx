@@ -1,6 +1,7 @@
 import { Route,Routes } from "react-router-dom";
 import Home from "./Pages/Home/home";
 import PageLayout from "./Components/PageLayout/pagelayout";
+import AnimeDetail from "./Pages/AnimeDetail/animedetail";
 
 
 export default function App() {
@@ -8,8 +9,8 @@ export default function App() {
     <Routes>
       <Route element={<PageLayout />}>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/anime/:slugOrId" element={<AnimeDetail />} />
-        <Route path="/manga/:slugOrId" element={<MangaDetail />} /> */}
+        <Route path="anime/:key" element={<AnimeDetail />} />
+        <Route path="manga/:key" element={<AnimeDetail />} />
         {/* <Route path="/anime" element={<Anime />} />
         <Route path="/manga" element={<Manga />} />
         <Route path="/about" element={<About />} />

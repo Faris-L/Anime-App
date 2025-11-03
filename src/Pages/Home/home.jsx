@@ -8,11 +8,11 @@ const Home = () =>{
     return(
         <HomeDiv>
             <HeroSlider category="action"/>
-            <CategoryList title="Adventure" hook={useAnimeByCategory} category="adventure" limit={10}/>
-            <CategoryList title="Romance" hook={useAnimeByCategory} category="romance" limit={10}/>
-            <CategoryList title="Horor" hook={useAnimeByCategory} category="horor" limit={10}/>
-            <CategoryList title="Adventure Manga" hook={useMangaByCategory} category="adventure" limit={10}/>
-             <CategoryList title="Action Manga" hook={useMangaByCategory} category="action" limit={10}/>
+            <CategoryList title="Adventure" hook={useAnimeByCategory} category="adventure" limit={10}  isManga={false} />
+            <CategoryList title="Romance" hook={useAnimeByCategory} category="romance" limit={10}  isManga={false} />
+            <CategoryList title="Horor" hook={useAnimeByCategory} category="horor" limit={10}  isManga={false} />
+            <CategoryList title="Adventure Manga" hook={useMangaByCategory} category="adventure" limit={10} isManga={true}/>
+             <CategoryList title="Action Manga" hook={useMangaByCategory} category="action" limit={10} isManga={true}/>
         </HomeDiv>
     )
 }

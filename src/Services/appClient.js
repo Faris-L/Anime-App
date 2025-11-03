@@ -8,7 +8,7 @@ export async function getAnimeByCategory(category, limit = 12) {
       "filter[categories]": category,
       sort: "-userCount",
       "page[limit]": limit,
-      "fields[anime]": "slug,titles,posterImage,coverImage,averageRating,userCount,episodeCount",
+     "fields[anime]": "slug,titles,posterImage,coverImage,averageRating,userCount,episodeCount,synopsis",
     },
   });
   return data.data; 
@@ -20,7 +20,7 @@ export async function getMangaByCategory(category, limit = 12) {
       "filter[categories]": category,
       sort: "-userCount",
       "page[limit]": limit,
-      "fields[manga]": "slug,titles,posterImage,averageRating,userCount",
+"fields[manga]": "slug,titles,posterImage,averageRating,userCount,synopsis",
     },
   });
   return data.data;

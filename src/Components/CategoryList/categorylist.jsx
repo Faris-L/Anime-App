@@ -37,7 +37,7 @@ const CategoryList = ({ title, hook, category, limit = 10,isManga = false }) => 
   return (
     <Section>
       {title && (
-        <TitleButton as={Link} to={`/${base}?category=${encodeURIComponent(category)}`}>
+        <TitleButton as={Link} to={`/${base}?category=${encodeURIComponent(category)}`} state={{ category, type: base }} >
           {title}
         </TitleButton>
       )}
@@ -45,7 +45,12 @@ const CategoryList = ({ title, hook, category, limit = 10,isManga = false }) => 
       <Grid>
         {data.map((it) => (
           <li key={it.id}>
-            <ItemButton as={Link} to={`/${base}/${it.slug || it.id}`} aria-label={it.title}>
+            <ItemButton
+              as={Link}
+              to={`/${base}/${it.slug || it.id}`}
+              state={{ item: it, type: base }}   
+              aria-label={it.title}
+              >
               <ItemImage src={it.img} alt={it.title} loading="lazy" />
             </ItemButton>
           </li>

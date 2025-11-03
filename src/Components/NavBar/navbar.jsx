@@ -17,7 +17,7 @@ export default function Navbar({ onMenuClick }) {
       <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
         <LogoBox>
           <LogoImg src={logo} alt="AnimeApp Logo" />
-          <Brand>AnimeApp</Brand>
+          <Brand>Ani</Brand>
         </LogoBox>
       </NavLink>
     </Bar>

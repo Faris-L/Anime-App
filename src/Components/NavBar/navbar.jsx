@@ -18,7 +18,6 @@ export default function Navbar({ onMenuClick }) {
         <LogoBox>
           <LogoImg src={logo} alt="AnimeApp Logo" />
           <Brand>Anime App</Brand>
-          <span>Bilosta</span>
         </LogoBox>
       </NavLink>
     </Bar>

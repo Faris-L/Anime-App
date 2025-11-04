@@ -21,7 +21,7 @@ export default function Anime() {
   const [categories, setCategories] = useState([]);
 
   const navigate = useNavigate();
-  const { data: animeList, isLoading, isError } = useAnimeByCategory(category, 12);
+  const { data: animeList, isLoading, isError } = useAnimeByCategory(category);
 
   useEffect(() => {
     async function fetchCategories() {

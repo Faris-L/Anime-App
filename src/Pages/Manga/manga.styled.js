@@ -1,19 +1,20 @@
 import styled from "styled-components";
 
 export const Page = styled.div`
-  background-color: #0d0d0d;
+  background-color: #343338;
   color: #fff;
   min-height: 100vh;
   padding: 50px 20px;
   font-family: "Poppins", sans-serif;
 `;
 
+
 export const Controls = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 45px;
 
   @media (min-width: 600px) {
     flex-direction: row;
@@ -22,7 +23,7 @@ export const Controls = styled.div`
 
   div {
     width: 100%;
-    max-width: 250px;
+    max-width: 280px;
   }
 `;
 
@@ -34,6 +35,7 @@ export const CategorySelect = styled.select`
   font-size: 1rem;
   width: 100%;
   cursor: pointer;
+  border-radius: 6px;
   appearance: none;
 
   &:hover {
@@ -48,6 +50,7 @@ export const SearchInput = styled.input`
   border: 1px solid #333;
   font-size: 1rem;
   width: 100%;
+  border-radius: 6px;
 
   &::placeholder {
     color: #888;
@@ -61,34 +64,28 @@ export const SearchInput = styled.input`
 
 export const Grid = styled.section`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
   gap: 25px;
-
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  justify-items: center;
 `;
 
 export const Card = styled.div`
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  width: 100%;
+  max-width: 270px;
+  border-radius: 10px;
 `;
 
 export const CardImage = styled.img`
   width: 100%;
-  height: 300px;
+  height: 350px;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
+  border-radius: 10px;
+  transition: transform 0.4s ease;
 
   ${Card}:hover & {
     transform: scale(1.05);
@@ -97,17 +94,17 @@ export const CardImage = styled.img`
 
 export const HoverOverlay = styled.div`
   position: absolute;
-  top: 0;
-  left:0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.45);
   opacity: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
   transition: opacity 0.3s ease;
+  border-radius: 10px;
 
   ${Card}:hover & {
     opacity: 1;

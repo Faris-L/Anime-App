@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAnimeByCategory } from "../Services/appClient";
 
-export default function useAnimeByCategory(category, limit = 12) {
+export default function useAnimeByCategory(category, limit) {
   return useQuery({
     queryKey: ["animeByCategory", category, limit],
     queryFn: () => getAnimeByCategory(category, limit),

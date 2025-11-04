@@ -26,9 +26,7 @@ export const Grid = styled.ul`
   overflow-y: hidden;  
   gap: 20px;           
 
-  @media (min-width: 769px) {
-    overflow-x: hidden; 
-  }
+  
 `
 
 export const ItemButton = styled(Link)`

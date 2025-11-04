@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AnimePage = styled.div`
+export const Page = styled.div`
   background-color: #0d0d0d;
   color: #fff;
   min-height: 100vh;
@@ -59,7 +59,7 @@ export const SearchInput = styled.input`
   }
 `;
 
-export const AnimeGrid = styled.section`
+export const Grid = styled.section`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
@@ -77,20 +77,20 @@ export const AnimeGrid = styled.section`
   }
 `;
 
-export const AnimeCard = styled.div`
+export const Card = styled.div`
   position: relative;
   overflow: hidden;
   cursor: pointer;
 `;
 
-export const AnimeImage = styled.img`
+export const CardImage = styled.img`
   width: 100%;
   height: 300px;
   object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
 
-  ${AnimeCard}:hover & {
+  ${Card}:hover & {
     transform: scale(1.05);
   }
 `;
@@ -109,7 +109,7 @@ export const HoverOverlay = styled.div`
   padding: 15px;
   transition: opacity 0.3s ease;
 
-  ${AnimeCard}:hover & {
+  ${Card}:hover & {
     opacity: 1;
   }
 `;
@@ -123,53 +123,4 @@ export const HoverText = styled.p`
   color: #fff;
   margin: 0;
   font-size: 0.9rem;
-`;
-
-export const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-export const ModalContent = styled.div`
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 30px;
-  max-width: 600px;
-  width: 90%;
-  position: relative;
-`;
-
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: #ff5555;
-  border: none;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 5px 10px;
-  cursor: pointer;
-
-  &:hover {
-    background: #ff0000;
-  }
-`;
-
-export const AnimeDetailsTitle = styled.h2`
-  font-size: 2rem;
-  margin-bottom: 15px;
-`;
-
-export const AnimeDetailsText = styled.p`
-  font-size: 1rem;
-  margin-bottom: 10px;
 `;

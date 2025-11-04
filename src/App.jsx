@@ -3,6 +3,7 @@ import Home from "./Pages/Home/home";
 import PageLayout from "./Components/PageLayout/pagelayout";
 import AnimeDetail from "./Pages/AnimeDetail/animedetail";
 import About from "./Pages/Aboutus/about";
+import Favorites from "./Pages/Favorites/FavoritesPage";
 
 
 export default function App() {
@@ -15,8 +16,8 @@ export default function App() {
         <Route path="manga/:key" element={<AnimeDetail />} />
         {/* <Route path="/anime" element={<Anime />} />
         <Route path="/manga" element={<Manga />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/favorites" element={<Favorites />} /> */}
+        <Route path="/about" element={<About />} />*/}
+        <Route path="/favorites" element={<Favorites />} /> 
       </Route>
     </Routes>
   );

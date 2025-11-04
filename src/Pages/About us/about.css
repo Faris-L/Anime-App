@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #050505;
+  color: #000;
+}
+
+/* Container kartica */
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 50px;
+}
+
+/* Kartica */
+.card-wrapper {
+  width: 250px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 350px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Slika preko cele kartice */
+.card-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.4s ease;
+}
+
+/* Kartica info */
+.card-info {
+  position: absolute;
+  bottom: 40px; /* podignut tekst */
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  padding: 0 15px;
+}
+
+/* Hover efekat */
+.card:hover .card-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  top: 20px;
+}
+
+.card:hover .card-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tekst */
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.bio {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+/* Društvene ikone */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  opacity: 1;
+}
+
+.social-icons a {
+  font-size: 20px;
+  color: #bbb;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* Hover boje za svaku mrežu */
+.social-icons a:nth-child(1):hover { color: #1877f2; } /* Facebook */
+.social-icons a:nth-child(2):hover { color: #e4405f; } /* Instagram */
+.social-icons a:nth-child(3):hover { color: #333; }     /* GitHub */
+.social-icons a:nth-child(4):hover { color: #0077b5; } /* LinkedIn */

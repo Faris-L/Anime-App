@@ -26,7 +26,7 @@ const cards = [
   },
 ];
 
-function about() {
+function About() {
   return (
     <div className="container">
       {cards.map((card) => (
@@ -56,4 +56,4 @@ function about() {
   );
 }
 
-export default about;
+export default About;

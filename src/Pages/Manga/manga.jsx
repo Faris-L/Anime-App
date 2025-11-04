@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useAnimeByCategory from "../../queries/useAnimeByCategory";
+import useMangaByCategory from "../../queries/useMangaByCategory";
 import { getCategories } from "../../Services/appClient";
 import {
-  AnimePage,
+  Page,
   Controls,
   CategorySelect,
   SearchInput,
-  AnimeGrid,
-  AnimeCard,
-  AnimeImage,
+  Grid,
+  Card,
+  CardImage,
   HoverOverlay,
   HoverTitle,
   HoverText,
-} from "./anime.styled";
+} from "./manga.styled";
 
-export default function Anime() {
+export default function Manga() {
   const [category, setCategory] = useState("action");
   const [searchTerm, setSearchTerm] = useState("");
   const [categories, setCategories] = useState([]);
 
   const navigate = useNavigate();
-  const { data: animeList, isLoading, isError } = useAnimeByCategory(category, 12);
+  const { data: mangaList, isLoading, isError } = useMangaByCategory(category, 12);
 
   useEffect(() => {
     async function fetchCategories() {
@@ -31,15 +31,16 @@ export default function Anime() {
     fetchCategories();
   }, []);
 
-  const filteredAnime = animeList?.filter((a) =>
-    a.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredManga = mangaList?.filter((m) =>
+    m.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (isLoading) return <p style={{ textAlign: "center" }}>Loading anime...</p>;
+  if (isLoading) return <p style={{ textAlign: "center" }}>Loading manga...</p>;
   if (isError) return <p style={{ textAlign: "center" }}>Something went wrong!</p>;
 
   return (
-    <AnimePage>
+    <Page>
+      {/* Controls */}
       <Controls>
         <div>
           <CategorySelect value={category} onChange={(e) => setCategory(e.target.value)}>
@@ -60,24 +61,21 @@ export default function Anime() {
         </div>
       </Controls>
 
-      {/* Anime Grid */}
-      <AnimeGrid>
-        {filteredAnime?.map((anime) => (
-          <AnimeCard
-            key={anime.id}
-            onClick={() => navigate(`/anime/${anime.id}`, { state: { item: anime } })}
+      {/* Manga Grid */}
+      <Grid>
+        {filteredManga?.map((manga) => (
+          <Card
+            key={manga.id}
+            onClick={() => navigate(`/manga/${manga.id}`, { state: { item: manga } })}
           >
-            <AnimeImage
-              src={anime.img || "/placeholder.jpg"}
-              alt={anime.title}
-            />
+            <CardImage src={manga.img || "/placeholder.jpg"} alt={manga.title} />
             <HoverOverlay>
-              <HoverTitle>{anime.title}</HoverTitle>
+              <HoverTitle>{manga.title}</HoverTitle>
               <HoverText>Click for more</HoverText>
             </HoverOverlay>
-          </AnimeCard>
+          </Card>
         ))}
-      </AnimeGrid>
-    </AnimePage>
+      </Grid>
+    </Page>
   );
 }

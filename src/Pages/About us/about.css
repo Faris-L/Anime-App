@@ -5,7 +5,6 @@ body {
   color: #000;
 }
 
-/* Container kartica */
 .container {
   display: flex;
   justify-content: center;
@@ -13,8 +12,6 @@ body {
   gap: 40px;
   padding: 50px;
 }
-
-/* Kartica */
 .card-wrapper {
   width: 250px;
 }
@@ -31,7 +28,6 @@ body {
   cursor: pointer;
 }
 
-/* Slika preko cele kartice */
 .card-image {
   width: 100%;
   height: 100%;
@@ -40,10 +36,9 @@ body {
   transition: all 0.4s ease;
 }
 
-/* Kartica info */
 .card-info {
   position: absolute;
-  bottom: 40px; /* podignut tekst */
+  bottom: 40px; 
   left: 0;
   right: 0;
   opacity: 0;
@@ -52,7 +47,6 @@ body {
   padding: 0 15px;
 }
 
-/* Hover efekat */
 .card:hover .card-image {
   width: 120px;
   height: 120px;
@@ -67,7 +61,7 @@ body {
   transform: translateY(0);
 }
 
-/* Tekst */
+
 .title {
   font-size: 18px;
   font-weight: 600;
@@ -86,7 +80,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* Društvene ikone */
+
 .social-icons {
   display: flex;
   justify-content: center;
@@ -104,8 +98,7 @@ body {
   transform: scale(1.2);
 }
 
-/* Hover boje za svaku mrežu */
-.social-icons a:nth-child(1):hover { color: #1877f2; } /* Facebook */
-.social-icons a:nth-child(2):hover { color: #e4405f; } /* Instagram */
-.social-icons a:nth-child(3):hover { color: #333; }     /* GitHub */
-.social-icons a:nth-child(4):hover { color: #0077b5; } /* LinkedIn */
+.social-icons a:nth-child(1):hover { color: #1877f2; } 
+.social-icons a:nth-child(2):hover { color: #e4405f; } 
+.social-icons a:nth-child(3):hover { color: #333; }     
+.social-icons a:nth-child(4):hover { color: #0077b5; }

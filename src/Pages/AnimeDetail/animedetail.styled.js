@@ -46,8 +46,8 @@ export const ImageBox = styled.div`
 `;
 
 export const AnimeImage = styled.img`
-  width: 280px;
-  height: 350px;
+  width: 250px;
+  height: 370px;
   border-radius: 12px;
   object-fit: cover;
 

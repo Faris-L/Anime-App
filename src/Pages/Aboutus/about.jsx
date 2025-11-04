@@ -1,25 +1,28 @@
 
 import 'boxicons/css/boxicons.min.css';
 import "./about.css";
+import alijeva from "../../assets/alijevaslika.jpeg";
+import farisova from "../../assets/farisovaslika.jpeg";
+import minina from "../../assets/mininaslika.jpeg";
 
 const cards = [
   {
     id: 1,
-    image: "https://picsum.photos/id/1018/400/400",
+    image: minina,
     title: "Mina Borojevic",
     subtitle: "Web Developer",
     bio: "Mina works in Centar NIT as a Web Developer.",
   },
   {
     id: 2,
-    image: "https://picsum.photos/id/1025/400/400",
+    image: farisova,
     title: "Faris Lakota",
     subtitle: "Web Developer",
     bio: "Faris works in Centar NIT as a Web Developer.",
   },
   {
     id: 3,
-    image: "https://picsum.photos/id/1035/400/400",
+    image: alijeva,
     title: "Ali Alic",
     subtitle: "Web Developer",
     bio: "Ali works in Centar NIT as a Web Developer.",

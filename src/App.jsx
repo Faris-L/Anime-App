@@ -2,6 +2,7 @@ import { Route,Routes } from "react-router-dom";
 import Home from "./Pages/Home/home";
 import PageLayout from "./Components/PageLayout/pagelayout";
 import AnimeDetail from "./Pages/AnimeDetail/animedetail";
+import About from "./Pages/Aboutus/about";
 
 
 export default function App() {
@@ -9,6 +10,7 @@ export default function App() {
     <Routes>
       <Route element={<PageLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="about" element={<About/>}/>
         <Route path="anime/:key" element={<AnimeDetail />} />
         <Route path="manga/:key" element={<AnimeDetail />} />
         {/* <Route path="/anime" element={<Anime />} />
